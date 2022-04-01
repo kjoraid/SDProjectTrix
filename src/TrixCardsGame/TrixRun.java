@@ -1,5 +1,5 @@
 
-package ca.sheridancollege.project;
+package TrixCardsGame;
 
 import java.util.ArrayList;
 
@@ -10,25 +10,25 @@ import java.util.ArrayList;
 public class TrixRun {
     public static void main(String[] args) {
         int handSize = Suit.values().length * Value.values().length;
-        CardHand ch = new CardHand(handSize);
+        GroupOfCards goc = new GroupOfCards(handSize);
         TrixGame trix = new TrixGame("Trix");
+        
         //TrixPlayer trixPlayers;
         ArrayList<TrixPlayer> players = new ArrayList<TrixPlayer>();
         players.add(new TrixPlayer("Khalid"));
         players.add(new TrixPlayer("Hannah"));
         players.add(new TrixPlayer("Omar"));
         players.add(new TrixPlayer("Adnan"));
-        
-        
-        ch.generateHand();
+
         int i=0;
         for(TrixPlayer t:players)
         {
             System.out.println("The Player no "+ ++i +" is " +t.getName()+ "\n");
         }
-        for(TrixCard c:ch.cards)
+        for(TrixCard cc:goc.getCards())
         {
-            System.out.println(c.getValue()+" of "+c.getSuit());
+
+            System.out.println(cc.getValue()+" of "+cc.getSuit() );
         }
     }
 }

@@ -1,5 +1,5 @@
 
-package ca.sheridancollege.project;
+package TrixCardsGame;
 
 /**
  *
@@ -8,10 +8,12 @@ package ca.sheridancollege.project;
 public class TrixCard  extends Card {
     private final Suit suit;
     private final Value value;
+    
     public TrixCard(Suit suit, Value value) {
         this.suit = suit;
         this.value = value;
     }
+ 
     /**
      * @return the suit
      */

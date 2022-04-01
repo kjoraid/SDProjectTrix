@@ -1,5 +1,5 @@
 
-package ca.sheridancollege.project;
+package TrixCardsGame;
 
 /**
  *
