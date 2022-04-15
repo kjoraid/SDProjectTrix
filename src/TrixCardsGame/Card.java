@@ -15,12 +15,31 @@ package TrixCardsGame;
 
 public abstract class Card {
     //default modifier for child classes
+    private final Suit suit;
+    private final Value value;
+    
 
     /**
      * Students should implement this method for their specific children classes
      *
      * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
      */
+    public Card(Suit suit, Value value) {
+        this.suit = suit;
+        this.value = value;
+    }
+    /**
+     * @return the suit
+     */
+    public Suit getSuit() {
+        return suit;
+    }
+    /**
+     * @return the value
+     */
+    public Value getValue() {
+        return value;
+    }
     @Override
     public abstract String toString();
 

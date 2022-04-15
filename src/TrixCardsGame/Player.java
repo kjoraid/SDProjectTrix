@@ -14,7 +14,6 @@ package TrixCardsGame;
  */
 
 public abstract class Player {
-
     private String name; //the unique name for this player
 
     /**
@@ -47,5 +46,5 @@ public abstract class Player {
      * with logic to play your game.
      */
     public abstract void play();
-
+   
 }

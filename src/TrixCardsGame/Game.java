@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public abstract class Game {
 
     private final String name;//the title of the game
-    private ArrayList<Player> players;// the players of the game
+    private ArrayList<TrixPlayer> players;// the players of the game
 
     public Game(String name) {
         this.name = name;
@@ -36,14 +36,14 @@ public abstract class Game {
     /**
      * @return the players of this game
      */
-    public ArrayList<Player> getPlayers() {
+    public ArrayList<TrixPlayer> getPlayers() {
         return players;
     }
 
     /**
      * @param players the players of this game
      */
-    public void setPlayers(ArrayList<Player> players) {
+    public void setPlayers(ArrayList<TrixPlayer> players) {
         this.players = players;
     }
 

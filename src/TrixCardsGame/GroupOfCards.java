@@ -8,6 +8,8 @@ package TrixCardsGame;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.xml.transform.Source;
+import sun.jvm.hotspot.runtime.PerfMemory;
 
 /**
  * A concrete class that represents any grouping of cards for a Game. HINT, you might want to subclass this more than
@@ -19,11 +21,14 @@ import java.util.Collections;
  */
 public class GroupOfCards {
     //The group of cards, stored in an ArrayList
-    private ArrayList<TrixCard> cards = new ArrayList<>();
+    private ArrayList<Card> cards = new ArrayList<>();
+    private ArrayList<Card> allCards = new ArrayList<>();
     private int size;//the size of the grouping
 
-    public GroupOfCards(int size) {
+
+    public GroupOfCards(int size, ArrayList allCard) {
         this.size = size;
+        this.allCards = allCard;
     }
 
     /**
@@ -31,25 +36,55 @@ public class GroupOfCards {
      *
      * @return the group of cards.
      */
-    public ArrayList<TrixCard> getCards() {
-        for(Suit s:Suit.values())
-        {
-            for(Value v: Value.values() )
-            {                
-                this.cards.add(new TrixCard(s ,v));
-            }
+    public ArrayList<Card> setCards() {
+        cards.clear();
+        //TrixRun.Allcards shuffle();
+        for (int i=(size-13); i<size;i++){
+            cards.add(allCards.get(i));
         }
-        shuffle();
+        sortCards();
         return cards;
     }
-
-    public void shuffle() {
-        Collections.shuffle(cards);
+    public ArrayList<Card> getCards() {
+        return cards;
     }
+    public void sortCards(){
+        ArrayList<Card> sortedCards = new ArrayList<Card>();
+
+        int j=0;
+        
+            for (Suit s:Suit.values())
+                {
+                for(Value v:Value.values())
+                {
+                   for (int i=0; i<cards.size();i++){
+                        if (cards.get(i).getSuit()==s && cards.get(i).getValue()==v)
+                        {
+                            sortedCards.add(cards.get(i));
+                            j++;
+                            cards.remove(i);
+                        }
+                    }
+                }
+            }
+            for (Card sc:sortedCards)
+               //System.out.println(sc.getSuit()+"--"+sc.getValue());
+            cards = (ArrayList<Card>)sortedCards.clone();
+    }
+            
+    public void deleteCards(int index) {
+        cards.remove(index);
+    }
+    
+
+    //public void shuffle() {
+    //    Collections.shuffle(Cards);
+    //}
 
     /**
      * @return the size of the group of cards
      */
+
     public int getSize() {
         return size;
     }
